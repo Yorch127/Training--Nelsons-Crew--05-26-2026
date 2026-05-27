@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>YSD – Employee Training Report – May 26, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#CC1B1B;--dark:#1a1a1a;--white:#fff;--light:#f5f5f3;--mid:#ebebea;--border:#ddddd8;--muted:#6b7280;--text:#1f2937;--green:#15803d;--gbg:#dcfce7}
+body{font-family:'Barlow',sans-serif;background:var(--light);color:var(--text);-webkit-font-smoothing:antialiased}
+.page{display:none}.page.active{display:block}
+.site-header{background:var(--white);border-top:5px solid var(--red);border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.header-inner{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo-img{height:64px;width:auto;display:block;flex-shrink:0}
+.logo-wordmark{display:flex;flex-direction:column}
+.co-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--dark);letter-spacing:.5px;text-transform:uppercase;line-height:1.1}
+.co-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.header-right{text-align:right}
+.doc-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.date-badge{display:inline-block;background:var(--red);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:#fff;padding:5px 14px;border-radius:3px;text-transform:uppercase;letter-spacing:1px}
+.cover-wrap,.detail-wrap{max-width:960px;margin:0 auto;padding:32px 16px 64px}
+.detail-wrap{padding-top:28px}
+.cover-intro{text-align:center;margin-bottom:28px}
+.cover-intro h1{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;text-transform:uppercase;color:var(--dark);line-height:1.1;margin-bottom:8px}
+.cover-intro p{font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin:0 auto}
+.red-bar{width:48px;height:4px;background:var(--red);margin:12px auto 18px;border-radius:2px}
+.cover-main-photo{width:100%;border-radius:8px;display:block;margin-bottom:28px;object-fit:cover;max-height:420px;cursor:pointer;transition:opacity .2s}
+.cover-main-photo:hover{opacity:.92}
+.info-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:32px;background:var(--white)}
+.info-table tr{border-bottom:1px solid var(--border)}.info-table tr:last-child{border-bottom:none}
+.info-table td{padding:11px 18px;font-size:13px}
+.info-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);width:200px;background:var(--light);border-right:1px solid var(--border)}
+.info-table td:last-child{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:var(--dark)}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-label::after{content:"";flex:1;height:1px;background:var(--border)}
+.trainee-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:580px){.trainee-grid{grid-template-columns:1fr}}
+.trainee-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit;display:block;transition:box-shadow .2s,transform .2s}
+.trainee-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.10);transform:translateY(-3px)}
+.tc-photo{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
+.tc-body{padding:14px 16px 12px;border-top:3px solid var(--red)}
+.tc-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;color:var(--dark);line-height:1.05;margin-bottom:2px}
+.tc-role{font-size:11px;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.tc-modules{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.tc-module{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;color:var(--dark);display:flex;align-items:center;gap:6px}
+.tc-module::before{content:"✓";color:var(--red);font-weight:800;font-size:11px}
+.tc-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--mid);padding-top:10px}
+.tc-qr{width:40px;height:40px;background:var(--light);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--muted);font-family:'Barlow Condensed',sans-serif;text-align:center}
+.tc-arrow{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--red)}
+.back-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted);cursor:pointer;background:none;border:none;padding:0;margin-bottom:24px;transition:color .15s}
+.back-btn:hover{color:var(--red)}.back-btn::before{content:"←";font-size:15px}
+.profile-hero{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;margin-bottom:28px}
+.profile-photo{width:180px;flex-shrink:0;object-fit:cover;object-position:center top;display:block;cursor:pointer;transition:opacity .2s}
+.profile-photo:hover{opacity:.88}
+.profile-info{flex:1;padding:20px 24px;border-left:4px solid var(--red);display:flex;flex-direction:column;justify-content:center}
+.profile-name{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;text-transform:uppercase;color:var(--dark);line-height:1;margin-bottom:2px}
+.profile-role{font-size:12px;color:var(--muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+.pi-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:1px}
+.pi-value{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:var(--dark)}
+.pi-value.pass{color:var(--green);font-weight:800}
+@media(max-width:580px){.profile-hero{flex-direction:column}.profile-photo{width:100%;height:240px}.profile-grid{grid-template-columns:1fr}}
+.training-section{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px}
+.ts-header{background:var(--dark);padding:12px 20px;display:flex;align-items:center;gap:10px}
+.ts-num{width:24px;height:24px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+.ts-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.ts-body{padding:20px}
+.ts-desc{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:16px}
+.equip-table{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:13px}
+.equip-table th{background:var(--light);padding:8px 12px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);text-align:left;border-bottom:2px solid var(--border)}
+.equip-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text)}
+.equip-table tr:last-child td{border-bottom:none}
+.equip-table td.pass{color:var(--green);font-weight:700}
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+@media(max-width:480px){.photo-grid{grid-template-columns:1fr}}
+.photo-item{display:flex;flex-direction:column}
+.clickable-photo{cursor:pointer;transition:opacity .2s,transform .15s;display:block}
+.photo-item .clickable-photo{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top;border-radius:6px 6px 0 0}
+.photo-item .clickable-photo:hover{opacity:.88;transform:scale(1.01)}
+.photo-caption{background:var(--dark);color:#d1d5db;font-size:11px;line-height:1.5;padding:7px 10px;border-radius:0 0 6px 6px}
+.photo-caption strong{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:12px}
+.photo-placeholder{background:var(--light);border:2px dashed var(--border);border-radius:6px;padding:28px;text-align:center;color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;margin-top:4px}
+.video-block{margin-bottom:16px;border-radius:8px;overflow:hidden;background:var(--dark)}
+.video-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff;background:var(--red);padding:8px 14px}
+.training-video{width:100%;display:block;max-height:480px;background:#000}
+.video-caption{font-size:11px;color:#d1d5db;padding:8px 12px;line-height:1.5}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:580px){.video-grid{grid-template-columns:1fr}}
+.score-wrap{text-align:center;padding:20px 0 14px}
+.score-num{font-family:'Barlow Condensed',sans-serif;font-size:60px;font-weight:800;color:var(--green);line-height:1}
+.score-label{display:inline-block;margin-top:6px;background:var(--gbg);color:var(--green);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;padding:4px 20px;border-radius:20px;letter-spacing:1px}
+.score-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px}
+.score-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.score-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);background:var(--light);width:160px;border-right:1px solid var(--border)}
+.score-table tr:last-child td{border-bottom:none}
+.exam-photo{width:100%;max-width:500px;display:block;margin:16px auto 0;border-radius:6px;cursor:pointer;transition:opacity .2s}
+.exam-photo:hover{opacity:.88}
+.site-footer{background:var(--dark);border-top:3px solid var(--red);padding:14px 24px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:11px;color:#6b7280;letter-spacing:1px;text-transform:uppercase}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:16px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:4px}
+.lightbox-close{position:fixed;top:16px;right:20px;font-size:36px;color:#fff;cursor:pointer;line-height:1;z-index:10000;opacity:.8;transition:opacity .15s}
+.lightbox-close:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- ═══ COVER ═══ -->
+<div id="page-cover" class="page active">
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <img class="logo-img" src="photos/logo.jpg" alt="YSD Logo">
+      <div class="logo-wordmark">
+        <div class="co-name">Young &amp; Sons Drywall</div>
+        <div class="co-sub">Safety &amp; Compliance Department &nbsp;|&nbsp; Houston, TX</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="doc-title">Employee Training Report</div>
+      <div class="date-badge">May 26, 2026</div>
+    </div>
+  </div>
+</header>
+<main class="cover-wrap">
+  <div class="cover-intro">
+    <h1>Employee Training Report</h1>
+    <div class="red-bar"></div>
+    <p>On May 26, 2026, YSD Safety Officer Jorge Vasquez conducted hands-on field safety training for two members of Nelson's team at Sheldon Fire Station #5 (YSD Job #4044). Training covered Aerial Lift Safety (Genie GR20 &amp; SkyJack SJ40 T+), Fall Protection, and Ladder Safety per OSHA 29 CFR 1926 and ANSI standards.</p>
+  </div>
+  <img class="cover-main-photo" src="photos/cover.jpg" alt="Both trainees reviewing training material" onclick="openLightbox(this)" loading="lazy">
+  <table class="info-table">
+    <tr><td>Training Date</td><td>May 26, 2026</td></tr>
+    <tr><td>Job Site</td><td>Sheldon Fire Station #5</td></tr>
+    <tr><td>General Contractor</td><td>Gamma Construction</td></tr>
+    <tr><td>Trainer / Safety Officer</td><td>Jorge Vasquez</td></tr>
+    <tr><td>Training Topic</td><td>Aerial Lift Safety / Fall Protection / Ladder Safety</td></tr>
+    <tr><td>Training Type</td><td>Hands-On Field Evaluation</td></tr>
+    <tr><td>Lift Equipment</td><td>Genie GR20 #10658676 &amp; SkyJack SJ40 T+ #12101170 — United Rentals</td></tr>
+    <tr><td>Exam Results</td><td>Both trainees scored 10 / 10 — Perfect Score</td></tr>
+  </table>
+  <div class="section-label">Trainees</div>
+  <div class="trainee-grid">
+    <a class="trainee-card" href="#" onclick="showPage('page-omar');return false;">
+      <img class="tc-photo" src="photos/omar.jpg" alt="Omar Mellado" loading="lazy">
+      <div class="tc-body">
+        <div class="tc-name">Omar Mellado ›</div>
+        <div class="tc-role">Drywall Worker — Nelson's Team</div>
+        <div class="tc-modules">
+          <div class="tc-module">Aerial Lift Training — Module 3A</div>
+          <div class="tc-module">Fall Protection</div>
+          <div class="tc-module">Ladder Safety</div>
+          <div class="tc-module">Written Exam — 10/10</div>
+        </div>
+        <div class="tc-footer"><div class="tc-qr">QR<br>CODE</div><div class="tc-arrow">›</div></div>
+      </div>
+    </a>
+    <a class="trainee-card" href="#" onclick="showPage('page-angel');return false;">
+      <img class="tc-photo" src="photos/angel.jpg" alt="Angel Joan Quintanilla Reyes" loading="lazy">
+      <div class="tc-body">
+        <div class="tc-name">Angel J. Quintanilla Reyes ›</div>
+        <div class="tc-role">Drywall Worker — Nelson's Team</div>
+        <div class="tc-modules">
+          <div class="tc-module">Aerial Lift Training — Module 3A</div>
+          <div class="tc-module">Fall Protection</div>
+          <div class="tc-module">Ladder Safety</div>
+          <div class="tc-module">Written Exam — 10/10</div>
+        </div>
+        <div class="tc-footer"><div class="tc-qr">QR<br>CODE</div><div class="tc-arrow">›</div></div>
+      </div>
+    </a>
+  </div>
+</main>
+<footer class="site-footer">Young &amp; Sons Drywall, L.P. &nbsp;·&nbsp; Safety &amp; Compliance Department &nbsp;·&nbsp; Sheldon Fire Station #5 &nbsp;·&nbsp; May 26, 2026</footer>
+</div>
+
+<!-- ═══ ANGEL ═══ -->
+<div id="page-angel" class="page">
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <img class="logo-img" src="photos/logo.jpg" alt="YSD Logo">
+      <div class="logo-wordmark">
+        <div class="co-name">Young &amp; Sons Drywall</div>
+        <div class="co-sub">Safety &amp; Compliance Department &nbsp;|&nbsp; Houston, TX</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="doc-title">Training Record — Angel Joan Quintanilla Reyes</div>
+      <div class="date-badge">May 26, 2026</div>
+    </div>
+  </div>
+</header>
+<main class="detail-wrap">
+  <button class="back-btn" onclick="showPage('page-cover')">Back to Report</button>
+  <div class="profile-hero">
+    <img class="profile-photo clickable-photo" src="photos/angel.jpg" alt="Angel Joan Quintanilla Reyes" onclick="openLightbox(this)" loading="lazy">
+    <div class="profile-info">
+      <div class="profile-name">Angel Joan Quintanilla Reyes</div>
+      <div class="profile-role">Drywall Worker &nbsp;·&nbsp; Nelson's Team</div>
+      <div class="profile-grid">
+        <div><div class="pi-label">Training Date</div><div class="pi-value">May 26, 2026</div></div>
+        <div><div class="pi-label">Job Site</div><div class="pi-value">Sheldon Fire Station #5</div></div>
+        <div><div class="pi-label">General Contractor</div><div class="pi-value">Gamma Construction</div></div>
+        <div><div class="pi-label">Trainer</div><div class="pi-value">Jorge Vasquez</div></div>
+        <div><div class="pi-label">Job Title</div><div class="pi-value">Drywall Worker</div></div>
+        <div><div class="pi-label">Training Type</div><div class="pi-value">Hands-On Field Evaluation</div></div>
+        <div><div class="pi-label">Topic</div><div class="pi-value">Aerial Lift / Fall Protection / Ladder</div></div>
+        <div><div class="pi-label">Status</div><div class="pi-value pass">✓ PASS — 10/10</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">1</div><div class="ts-title">Fall Protection Equipment Inspection</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Prior to hands-on training, all fall protection equipment was inspected per ANSI Z359.11-2021 and OSHA 29 CFR 1926.502. Angel demonstrated proper donning, adjustment, and inspection of the Werner full-body harness and Bantam 6 SRL.</p>
+      <table class="equip-table"><thead><tr><th>Equipment</th><th>Standard</th><th>Condition</th></tr></thead><tbody>
+      <tr><td>Full-Body Harness (Werner)</td><td>ANSI Z359.11-2021 / OSHA 1926.502</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      <tr><td>Werner Bantam 6 SRL</td><td>ANSI Z359.14 / OSHA 1926.502</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      <tr><td>Snap Hook / Connector</td><td>ANSI Z359 / EN362</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      <tr><td>Dorsal D-Ring</td><td>5,000 lb rated</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      </tbody></table>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/a_fp1.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 1-A"><div class="photo-caption"><strong>Fig. 1-A</strong> — Angel fully donned in Werner harness, fastening chest buckle at sternum. All straps correctly adjusted.</div></div>
+        <div class="photo-item"><img src="photos/a_fp2.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 1-B"><div class="photo-caption"><strong>Fig. 1-B</strong> — Rear view — dorsal D-ring centered between shoulder blades. Strap routing verified per ANSI Z359.11.</div></div>
+        <div class="photo-item"><img src="photos/a_fp3.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 1-C"><div class="photo-caption"><strong>Fig. 1-C</strong> — Werner Bantam 6 SRL connected to dorsal D-ring. Double-locking gate confirmed per ANSI Z359.14.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">2</div><div class="ts-title">Aerial Lift — Equipment Identification</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Employee identified and confirmed unit information on both the Genie GR20 and SkyJack SJ40 T+ prior to any operation. Pre-operation inspection conducted per OSHA 29 CFR 1926.453 and manufacturer guidelines.</p>
+      <table class="equip-table"><thead><tr><th>Make / Model</th><th>Unit ID</th><th>Rental Company</th><th>Type</th></tr></thead><tbody>
+      <tr><td>Genie GR20</td><td>#10658676</td><td>United Rentals / 1-800-UR-RENTS</td><td class="pass">Personnel Lift</td></tr>
+      <tr><td>SkyJack SJ40 T+</td><td>#12101170</td><td>United Rentals / 800-UR-RENTS</td><td class="pass">Boom Lift</td></tr>
+      </tbody></table>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/a_lift6.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 2-A"><div class="photo-caption"><strong>Fig. 2-A</strong> — Genie GR20 SmartLink ground control panel. READY status, emergency stop, and lowering instructions confirmed.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">3</div><div class="ts-title">Hands-On Training — Aerial Lift &amp; Boom Lift Operations</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Angel demonstrated proficiency on both the Genie GR20 personnel lift and SkyJack SJ40 T+ boom lift per OSHA 29 CFR 1926.453. Covered three-point contact, gate operation, 100% tie-off, platform and ground controls, and emergency lowering. Angel was comfortable operating both top and ground controls on the boom lift.</p>
+      <div class="video-block">
+        <div class="video-label">🎥 Video — Angel Operating Boom Lift (SkyJack SJ40 T+)</div>
+        <video controls playsinline preload="metadata" class="training-video">
+          <source src="videos/angel_boom.mp4" type="video/mp4">
+        </video>
+        <div class="video-caption">Angel demonstrating proficiency operating the SkyJack SJ40 T+ boom lift from platform and ground controls. Harness and 100% tie-off maintained throughout per OSHA 1926.453.</div>
+      </div>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/a_boom1.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-A"><div class="photo-caption"><strong>Fig. 3-A</strong> — Angel on boom lift platform at low elevation, operating controls. 100% tie-off to anchor point per OSHA 1926.453.</div></div>
+        <div class="photo-item"><img src="photos/a_boom2.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-B"><div class="photo-caption"><strong>Fig. 3-B</strong> — Angel elevated on SkyJack SJ40 T+ operating top platform controls. Full-body harness worn, gate closed and latched.</div></div>
+        <div class="photo-item"><img src="photos/a_boom3.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-C"><div class="photo-caption"><strong>Fig. 3-C</strong> — Wide shot — Angel elevated on SkyJack SJ40 T+. Boom extended, harness tied off, active operations at Sheldon Fire Station #5.</div></div>
+        <div class="photo-item"><img src="photos/a_boom4.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-D"><div class="photo-caption"><strong>Fig. 3-D</strong> — Full view of SkyJack SJ40 T+ (Unit #12101170) with Angel on elevated platform.</div></div>
+        <div class="photo-item"><img src="photos/a_lift1.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-E"><div class="photo-caption"><strong>Fig. 3-E</strong> — Angel demonstrating three-point contact boarding the Genie GR20. SRL attached to D-ring prior to entry.</div></div>
+        <div class="photo-item"><img src="photos/a_lift2.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-F"><div class="photo-caption"><strong>Fig. 3-F</strong> — Angel on Genie GR20 platform at ground level, operating platform controls. Gate closed and latched.</div></div>
+        <div class="photo-item"><img src="photos/a_lift4.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-G"><div class="photo-caption"><strong>Fig. 3-G</strong> — Angel on Genie GR20 (Unit #10658676). Harness worn, SRL attached to approved anchor point.</div></div>
+        <div class="photo-item"><img src="photos/a_lift5.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-H"><div class="photo-caption"><strong>Fig. 3-H</strong> — Angel elevated on Genie GR20 working at height. 100% tie-off maintained per OSHA 1926.453.</div></div>
+        <div class="photo-item"><img src="photos/a_lift7.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-I"><div class="photo-caption"><strong>Fig. 3-I</strong> — Angel at ground-level emergency lowering controls demonstrating correct emergency lowering procedure.</div></div>
+        <div class="photo-item"><img src="photos/a_lift8.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-J"><div class="photo-caption"><strong>Fig. 3-J</strong> — Angel at ground controls while Omar elevated — demonstrates ground operator role during emergency lowering training.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">4</div><div class="ts-title">Ladder Safety — Extension &amp; Frame Ladders</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Angel demonstrated proper ladder inspection, setup, and use per OSHA 29 CFR 1926.1053. Confirmed spreader bar lock, three-point contact, non-slip feet, and prohibited uses.</p>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/a_lad1.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-A"><div class="photo-caption"><strong>Fig. 4-A</strong> — Angel climbing Werner stepladder (300 lb rated), three-point contact demonstrated.</div></div>
+        <div class="photo-item"><img src="photos/a_lad3.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-B"><div class="photo-caption"><strong>Fig. 4-B</strong> — Angel elevated on Werner stepladder at ceiling level. Proper foot placement on rungs per OSHA 1926.1053.</div></div>
+        <div class="photo-item"><img src="photos/a_lad2.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-C"><div class="photo-caption"><strong>Fig. 4-C</strong> — Werner stepladder spreader bar in locked position. Proper setup confirmed before climbing.</div></div>
+        <div class="photo-item"><img src="photos/a_lad4.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-D"><div class="photo-caption"><strong>Fig. 4-D</strong> — Ladder base showing non-slip feet correctly positioned on level concrete.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">5</div><div class="ts-title">Written Examination — Plataformas Aéreas / Protección Contra Caídas / Escaleras</div></div>
+    <div class="ts-body">
+      <div class="score-wrap"><div class="score-num">10 / 10</div><div class="score-label">✓ PERFECT SCORE</div></div>
+      <table class="score-table">
+        <tr><td>Exam Title</td><td>Examen de Capacitación — Plataformas Aéreas (Tijeras y Brazos Articulados)</td></tr>
+        <tr><td>Employee</td><td>Angel Joan Quintanilla Reyes</td></tr>
+        <tr><td>Date</td><td>May 26, 2026</td></tr>
+        <tr><td>Language</td><td>Spanish</td></tr>
+        <tr><td>Questions</td><td>10 multiple-choice</td></tr>
+        <tr><td>Passing Score</td><td>8 / 10 minimum</td></tr>
+        <tr><td>Score Achieved</td><td>10 / 10 — PASS</td></tr>
+      </table>
+      <div class="photo-placeholder">📷 Angel's exam photo will be added here</div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">Young &amp; Sons Drywall, L.P. &nbsp;·&nbsp; Angel Joan Quintanilla Reyes &nbsp;·&nbsp; Sheldon Fire Station #5 &nbsp;·&nbsp; May 26, 2026</footer>
+</div>
+
+<!-- ═══ OMAR ═══ -->
+<div id="page-omar" class="page">
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <img class="logo-img" src="photos/logo.jpg" alt="YSD Logo">
+      <div class="logo-wordmark">
+        <div class="co-name">Young &amp; Sons Drywall</div>
+        <div class="co-sub">Safety &amp; Compliance Department &nbsp;|&nbsp; Houston, TX</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="doc-title">Training Record — Omar Mellado</div>
+      <div class="date-badge">May 26, 2026</div>
+    </div>
+  </div>
+</header>
+<main class="detail-wrap">
+  <button class="back-btn" onclick="showPage('page-cover')">Back to Report</button>
+  <div class="profile-hero">
+    <img class="profile-photo clickable-photo" src="photos/omar.jpg" alt="Omar Mellado" onclick="openLightbox(this)" loading="lazy">
+    <div class="profile-info">
+      <div class="profile-name">Omar Mellado</div>
+      <div class="profile-role">Drywall Worker &nbsp;·&nbsp; Nelson's Team</div>
+      <div class="profile-grid">
+        <div><div class="pi-label">Training Date</div><div class="pi-value">May 26, 2026</div></div>
+        <div><div class="pi-label">Job Site</div><div class="pi-value">Sheldon Fire Station #5</div></div>
+        <div><div class="pi-label">General Contractor</div><div class="pi-value">Gamma Construction</div></div>
+        <div><div class="pi-label">Trainer</div><div class="pi-value">Jorge Vasquez</div></div>
+        <div><div class="pi-label">Job Title</div><div class="pi-value">Drywall Worker</div></div>
+        <div><div class="pi-label">Training Type</div><div class="pi-value">Hands-On Field Evaluation</div></div>
+        <div><div class="pi-label">Topic</div><div class="pi-value">Aerial Lift / Fall Protection / Ladder</div></div>
+        <div><div class="pi-label">Status</div><div class="pi-value pass">✓ PASS — 10/10</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">1</div><div class="ts-title">Fall Protection Equipment Inspection</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Prior to hands-on training, all fall protection equipment was inspected per ANSI Z359.11-2021 and OSHA 29 CFR 1926.502. Omar demonstrated proper donning, adjustment, and inspection of the Werner full-body harness and Max Patrol Leading Edge SRL.</p>
+      <table class="equip-table"><thead><tr><th>Equipment</th><th>Standard</th><th>Condition</th></tr></thead><tbody>
+      <tr><td>Full-Body Harness (Werner)</td><td>ANSI Z359.11-2021 / OSHA 1926.502</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      <tr><td>Werner Max Patrol Leading Edge SRL (10 ft)</td><td>ANSI Z359.14 / OSHA 1926.502</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      <tr><td>Snap Hook / Carabiner</td><td>ANSI Z359 / EN362</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      <tr><td>Dorsal D-Ring</td><td>5,000 lb rated</td><td class="pass">✓ ACCEPTABLE</td></tr>
+      </tbody></table>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/o_fp1.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 1-A"><div class="photo-caption"><strong>Fig. 1-A</strong> — Omar fully donned in Werner harness over hi-vis vest. Max Patrol SRL attached to dorsal D-ring.</div></div>
+        <div class="photo-item"><img src="photos/o_fp2.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 1-B"><div class="photo-caption"><strong>Fig. 1-B</strong> — Closeup of Omar fastening Werner chest buckle at sternum. ANSI Z359 label visible.</div></div>
+        <div class="photo-item"><img src="photos/o_fp3.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 1-C"><div class="photo-caption"><strong>Fig. 1-C</strong> — Rear view — dorsal D-ring centered between shoulder blades. Werner Max Patrol Leading Edge SRL (10 ft) connected via carabiner.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">2</div><div class="ts-title">Aerial Lift — Equipment Identification &amp; Pre-Operation Inspection</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Omar identified the Genie GR20 and conducted a full pre-operation inspection per OSHA 29 CFR 1926.453, including battery/hydraulic compartment and ground control panel review.</p>
+      <table class="equip-table"><thead><tr><th>Make / Model</th><th>Unit ID</th><th>Rental Company</th><th>Type</th></tr></thead><tbody>
+      <tr><td>Genie GR20</td><td>#10658676</td><td>United Rentals / 1-800-UR-RENTS</td><td class="pass">Personnel Lift</td></tr>
+      </tbody></table>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/o_lift1.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 2-A"><div class="photo-caption"><strong>Fig. 2-A</strong> — Omar inspecting Genie GR20 unit #10658676, reading unit ID during pre-operation inspection.</div></div>
+        <div class="photo-item"><img src="photos/o_lift2.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 2-B"><div class="photo-caption"><strong>Fig. 2-B</strong> — Omar opening and inspecting battery/hydraulic compartment per manufacturer pre-operation guidelines.</div></div>
+        <div class="photo-item"><img src="photos/o_lift3.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 2-C"><div class="photo-caption"><strong>Fig. 2-C</strong> — Omar reviewing Genie GR20 SmartLink ground control panel — identifying emergency stop and operating controls.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">3</div><div class="ts-title">Hands-On Training — Aerial Lift Operations &amp; Emergency Procedures</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Omar demonstrated proficiency in aerial lift operations and emergency procedures per OSHA 29 CFR 1926.453. Covered three-point contact boarding, platform operation, 100% tie-off, operating at elevation, and emergency stop and lowering from both platform and ground controls.</p>
+      <div class="video-grid">
+        <div class="video-block">
+          <div class="video-label">🎥 Video 1 — Omar Boom Lift Operations</div>
+          <video controls playsinline preload="metadata" class="training-video">
+            <source src="videos/omar_boom1.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Omar demonstrating boom lift operation and platform controls per OSHA 1926.453.</div>
+        </div>
+        <div class="video-block">
+          <div class="video-label">🎥 Video 2 — Omar Platform Controls</div>
+          <video controls playsinline preload="metadata" class="training-video">
+            <source src="videos/omar_boom2.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Omar operating boom lift platform controls showing comfort with ground and platform operation.</div>
+        </div>
+      </div>
+      <div class="video-block">
+        <div class="video-label">🎥 Video 3 — Omar Emergency Procedures</div>
+        <video controls playsinline preload="metadata" class="training-video">
+          <source src="videos/omar_boom3.mp4" type="video/mp4">
+        </video>
+        <div class="video-caption">Omar demonstrating emergency lowering and stop procedures from ground controls on the Genie GR20.</div>
+      </div>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/o_lift4.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-A"><div class="photo-caption"><strong>Fig. 3-A</strong> — Omar approaching Genie GR20 platform with harness on and Max Patrol SRL attached.</div></div>
+        <div class="photo-item"><img src="photos/o_lift5.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-B"><div class="photo-caption"><strong>Fig. 3-B</strong> — Snap hook connected to approved anchor point per OSHA 1926.453 100% tie-off requirement.</div></div>
+        <div class="photo-item"><img src="photos/o_lift6.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-C"><div class="photo-caption"><strong>Fig. 3-C</strong> — Omar on Genie GR20 platform operating controls. Angel visible in background during training.</div></div>
+        <div class="photo-item"><img src="photos/o_lift7.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-D"><div class="photo-caption"><strong>Fig. 3-D</strong> — Full view of Genie GR20 #10658676 with Omar on platform. Angel as ground observer.</div></div>
+        <div class="photo-item"><img src="photos/o_lift8.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-E"><div class="photo-caption"><strong>Fig. 3-E</strong> — Omar on platform at ground level demonstrating control operation. Gate confirmed closed.</div></div>
+        <div class="photo-item"><img src="photos/o_lift9.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-F"><div class="photo-caption"><strong>Fig. 3-F</strong> — Omar on lift platform with Angel approaching in background.</div></div>
+        <div class="photo-item"><img src="photos/o_lift10.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-G"><div class="photo-caption"><strong>Fig. 3-G</strong> — Omar at Genie GR20 SmartLink ground panel demonstrating emergency stop and lowering procedure.</div></div>
+        <div class="photo-item"><img src="photos/o_lift11.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 3-H"><div class="photo-caption"><strong>Fig. 3-H</strong> — Omar rear view on Genie GR20 (Unit #10658676), operating platform controls with harness worn.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">4</div><div class="ts-title">Ladder Safety — Extension &amp; Frame Ladders</div></div>
+    <div class="ts-body">
+      <p class="ts-desc">Omar demonstrated proper ladder inspection, setup, and use per OSHA 29 CFR 1926.1053. Confirmed duty ratings, three-point contact, spreader bar lock, non-slip foot placement, and safe work at elevation.</p>
+      <div class="photo-grid">
+        <div class="photo-item"><img src="photos/o_lad2.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-A"><div class="photo-caption"><strong>Fig. 4-A</strong> — Omar climbing Werner stepladder (300 lb / 136 kg rated), three-point contact demonstrated.</div></div>
+        <div class="photo-item"><img src="photos/o_lad3.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-B"><div class="photo-caption"><strong>Fig. 4-B</strong> — Omar elevated on Werner stepladder at ceiling level. Proper foot placement on rungs.</div></div>
+        <div class="photo-item"><img src="photos/o_lad1.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-C"><div class="photo-caption"><strong>Fig. 4-C</strong> — Werner stepladder non-slip base feet on concrete — proper ground contact per OSHA 1926.1053.</div></div>
+        <div class="photo-item"><img src="photos/o_lad4.jpg" class="clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Fig 4-D"><div class="photo-caption"><strong>Fig. 4-D</strong> — Werner spreader brace in locked position confirming proper stepladder setup.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="training-section">
+    <div class="ts-header"><div class="ts-num">5</div><div class="ts-title">Written Examination — Plataformas Aéreas / Protección Contra Caídas / Escaleras</div></div>
+    <div class="ts-body">
+      <div class="score-wrap"><div class="score-num">10 / 10</div><div class="score-label">✓ PERFECT SCORE</div></div>
+      <table class="score-table">
+        <tr><td>Exam Title</td><td>Examen de Capacitación — Plataformas Aéreas (Tijeras y Brazos Articulados)</td></tr>
+        <tr><td>Employee</td><td>Omar Mellado</td></tr>
+        <tr><td>Date</td><td>May 26, 2026</td></tr>
+        <tr><td>Language</td><td>Spanish</td></tr>
+        <tr><td>Questions</td><td>10 multiple-choice</td></tr>
+        <tr><td>Passing Score</td><td>8 / 10 minimum</td></tr>
+        <tr><td>Score Achieved</td><td>10 / 10 — PASS</td></tr>
+      </table>
+      <img src="photos/o_exam.jpg" class="exam-photo clickable-photo" onclick="openLightbox(this)" loading="lazy" alt="Omar exam">
+    </div>
+  </div>
+</main>
+<footer class="site-footer">Young &amp; Sons Drywall, L.P. &nbsp;·&nbsp; Omar Mellado &nbsp;·&nbsp; Sheldon Fire Station #5 &nbsp;·&nbsp; May 26, 2026</footer>
+</div>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openLightbox(img){
+  document.getElementById('lightbox-img').src=img.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+</body>
+</html>
